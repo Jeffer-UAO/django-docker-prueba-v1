@@ -3,20 +3,6 @@ FROM python:3.10 AS builder
 
 WORKDIR /app
 
-# Instalar PostgreSQL y herramientas necesarias
-RUN apt-get update && apt-get install -y postgresql postgresql-contrib
-
-# Definir las variables de entorno para el usuario de PostgreSQL, contraseña y puerto
-ENV POSTGRES_USER=postgres
-ENV POSTGRES_PASSWORD=D3s4rr0ll0
-ENV POSTGRES_PORT=5432
-
-# Iniciar el servicio de PostgreSQL
-RUN service postgresql start
-
-# Crear la base de datos utilizando las variables de entorno
-RUN createdb -U postgres db_1
-
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
