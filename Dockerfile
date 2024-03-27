@@ -11,8 +11,8 @@ COPY . .
 # ENV DJANGO_SETTINGS_MODULE=myproject.settings
 
 # Ejecuta los comandos de construcción, por ejemplo, migraciones y recolección de archivos estáticos
-RUN python3 manage.py makemigrations
-RUN python3 manage.py migrate
+# RUN python3 manage.py makemigrations
+# RUN python3 manage.py migrate
 RUN python3 manage.py collectstatic --no-input
 
 # Etapa 2: Despliegue a producción
