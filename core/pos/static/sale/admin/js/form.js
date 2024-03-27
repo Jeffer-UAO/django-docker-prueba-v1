@@ -5,8 +5,8 @@ var tblSearchProducts, tblProducts;
 
 var sale = {
     detail: {
-        subtotal_0: 0.01,
-        subtotal_12: 0.01,
+        subtotal_0: 0.00,
+        subtotal_12: 0.00,
         subtotal: 0.00,
         iva: 0.00,
         total_iva: 0.00,
