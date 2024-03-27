@@ -15,7 +15,7 @@ ENV POSTGRES_PORT=5432
 RUN service postgresql start
 
 # Crear la base de datos utilizando las variables de entorno
-RUN sudo -u postgres psql -c "CREATE DATABASE db_1;"
+RUN su postgres -c "psql -c 'CREATE DATABASE db_1;'"
 
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
