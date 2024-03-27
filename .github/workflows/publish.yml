@@ -33,7 +33,7 @@ jobs:
       - name: SSH into Server and deploy
         run: |
           ssh -o StrictHostKeyChecking=no -i ${{ secrets.SSH_PRIVATE_KEY }} ssheasy@143.244.186.207 -p 22010 'mkdir -p ~/.ssh && echo "$(cat <<EOF
-          cd /home/ssheasy/django-docker
+          cd /home/ubuntu
           docker login ghcr.io -u ${{ github.actor }} -p ${{ secrets.GHCR_PAT }}
           docker pull ghcr.io/jeffer-uao/django-docker-prueba-v1:latest
           docker stop django-docker-prueba-v1
