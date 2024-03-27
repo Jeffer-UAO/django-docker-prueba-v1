@@ -37,17 +37,17 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY  }}
           port: ${{ secrets.SSH_PORT }}
-          acript: | 
+          script: | 
             cd ${{ secrets.DESTINATION_FOLDER }}
             docker login ghcr.io -u ${{ github.actor }} -p ${{ secrets.GHCR_PAT }}
             docker pull ghcr.io/jeffer-uao/django-docker-prueba-v1:latest
-            docker stop django-docker-prueba-v1
-            docker rm django-docker-prueba-v1
+            docker stop django-docker-prueba-v1 || true
+            docker rm django-docker-prueba-v1 || true
             docker run -d \
-            --name django-docker-prueba-v1 \
-            -p 8080:8080 \
-            -v $(pwd):/app \
-            -w /app \
-            --restart always \
-            --env-file .env \
-            ghcr.io/jeffer-uao/django-docker-prueba-v1:latest
+              --name django-docker-prueba-v1 \
+              -p 8080:8080 \
+              -v $(pwd):/app \
+              -w /app \
+              --restart always \
+              --env-file .env \
+              ghcr.io/jeffer-uao/django-docker-prueba-v1:latest
